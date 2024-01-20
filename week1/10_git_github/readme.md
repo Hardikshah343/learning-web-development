@@ -135,7 +135,7 @@ Pushes all changes to git
 To clone repository along with whole history and changes.
 
 * **git commit -ma "Message for updating on all files"**
-To put changes message for all.
+Short hand to add and put the message for changes.
 
 
 ### Flow of writing the code
@@ -206,6 +206,4 @@ Helps in exiting the merge process and returning back to the state before the me
 
 * **git reset**
 Used at the time of merge conflict to reset the conflicted files to their original state.
-
-
 
