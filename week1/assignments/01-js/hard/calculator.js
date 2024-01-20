@@ -17,13 +17,13 @@
 */
 
 class Calculator {
-  constructor(result) {
-    this.result = result;
+  constructor() {
+    this.result = 0;
   }
   add(value) {
     this.result += value;
   }
-  substract(value) {
+  subtract(value) {
     this.result -= value;
   }
   multiply(value) {
@@ -34,7 +34,8 @@ class Calculator {
       this.result /= value;
     }
     else {
-      console.log("Invalid operation");
+      // console.log("Invalid operation");
+      return Error();
     }
   }
   clear() {
@@ -44,8 +45,11 @@ class Calculator {
     return this.result;
   }
   calculate(str) {
-    let arr = str.split()
+    let arr = str.split();
+    /* Implementation pending */
   }
 }
-
+calc = new Calculator();
+calc.add(5);
+console.log(calc.getResult());
 module.exports = Calculator;

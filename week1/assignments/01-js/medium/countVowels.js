@@ -10,12 +10,13 @@ function countVowels(str) {
   let count = 0;
   let ansStr = str.toLowerCase();
   for(let i = 0; i < ansStr.length; i++) {
-    if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u') {
+    if(ansStr[i] == 'a' || ansStr[i] == 'e' || ansStr[i] == 'i' 
+      || ansStr[i] == 'o' || ansStr[i] == 'u') {
       count += 1;
     }
   }
   return count;
 }
 
-// console.log(countVowels(""))
+// console.log(countVowels("OpenAI"))
 module.exports = countVowels;

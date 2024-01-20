@@ -7,6 +7,8 @@
 function isAnagram(str1, str2) {
   var result = true;
   var listOfChars = new Array(256).fill(0);
+  str1 = str1.toLowerCase();
+  str2 = str2.toLowerCase();
   if(str1.length == str2.length) {
     for(let i = 0; i < str1.length; i++){
       listOfChars[str1.charCodeAt(i)]++;
@@ -27,5 +29,5 @@ function isAnagram(str1, str2) {
   return result;
 }
 
-// console.log(isAnagram("hell", "lleh"));
+// console.log(isAnagram("Debit Card", "Bad Credit"));
 module.exports = isAnagram;
