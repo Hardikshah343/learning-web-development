@@ -12,3 +12,5 @@ fs.readFile("hello.txt", "utf8", (err, data) => {
 console.log("End of program!");
 
 for(i=0; i < 1000000000;i++) {}
+
+console.log("End of expensive operation.");
