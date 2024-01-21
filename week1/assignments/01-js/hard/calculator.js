@@ -30,13 +30,10 @@ class Calculator {
     this.result *= value;
   }
   divide(value) {
-    if(value != 0) {
-      this.result /= value;
+    if(value == undefined || typeof value !== 'number' || value == 0) {
+      throw Error("Error");
     }
-    else {
-      // console.log("Invalid operation");
-      return Error();
-    }
+    this.result /= value;
   }
   clear() {
     this.result = 0;
@@ -50,6 +47,6 @@ class Calculator {
   }
 }
 calc = new Calculator();
-calc.add(5);
 console.log(calc.getResult());
+console.log(calc.divide(0));
 module.exports = Calculator;
