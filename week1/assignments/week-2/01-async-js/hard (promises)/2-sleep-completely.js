@@ -5,7 +5,7 @@
  */
 
 function sleep(milliseconds) {
-    async function waitForMilli () {
+    function waitForMilli () {
         setTimeout(()=>{
             
         }, milliseconds);
@@ -15,5 +15,9 @@ function sleep(milliseconds) {
         resolve;
     });
 }
-
+let p = sleep(3000);
+p.then(()=>{
+    await
+});
+console.log("Hello");
 module.exports = sleep;

@@ -41,9 +41,61 @@
  */
   const express = require('express');
   const bodyParser = require('body-parser');
-  
   const app = express();
   
   app.use(bodyParser.json());
   
+  toDoList = [];
+  id = 0;
+
+  app.get("/todos", (req, res) => {
+    res.json(toDoList);
+  });
+
+  app.get("/todos/:todoId", (req, res) => {
+    let respData = [];
+    respData = toDoList.filter((item)=>{
+      return item.id == req.params.todoId;
+    });
+    res.status(200).json(respData);
+  });
+
+  app.post("/todos", (req, res) => {
+    console.log("Post request");
+    let dataObj = {};
+    if(req.body != undefined) {
+      dataObj.id = ++id;
+      dataObj.title = req.body.title != undefined ? req.body.title : null;
+      dataObj.description = req.body.description != undefined ? req.body.description : null;
+      dataObj.completed = req.body.completed != undefined ? req.body.completed : null;
+      toDoList.push(dataObj);
+      res.send("Todo list added.");
+    } else {
+      res.send("Body not found. Not updated Todo.");
+    }
+  });
+
+  app.put("/todos/:todoId", (req, res) => {
+    toDoList.map((item)=>{
+      if(item.id == req.params.todoId) {
+        item.title = req.body.title != undefined ? req.body.title : null;
+        item.description = req.body.description != undefined ? req.body.description : null;
+        item.completed = req.body.completed != undefined ? req.body.completed : null;
+      }
+    });
+  });
+
+  app.delete("/todos/:todoId", (req, res) => {
+    toDoList.map((item)=>{
+      if(item.id == req.params.todoId) {
+        item.pop();
+      }
+    });
+  });
+
+  app.all("*", (req, res) => {
+    res.status(404).send("Route not found.");
+  });
+
+  app.listen(3000);
   module.exports = app;
