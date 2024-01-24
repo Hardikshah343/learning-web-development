@@ -12,3 +12,10 @@ Covering following list of topics for week 1.
 8. More on HTTP Server using **Express**
 9. Simplicity using **Map**, **Filter** and **Arrow function**
 10. **GIT** and **GitHub**
+
+## Week 2
+Covering following list of topics for week 2.
+1. **Middlewares** for authentication,etc.
+2. **Input Validation**, **Global Catches**
+3. **Zod** for input validation
+4. **Authentication**
