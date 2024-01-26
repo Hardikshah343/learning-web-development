@@ -19,3 +19,4 @@ Covering following list of topics for week 2.
 2. **Input Validation**, **Global Catches**
 3. **Zod** for input validation
 4. **Authentication**
+5. **DataBases** (NoSQL via MongoDB)

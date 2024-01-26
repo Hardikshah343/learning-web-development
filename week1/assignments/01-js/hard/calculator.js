@@ -15,6 +15,46 @@
 
   Once you've implemented the logic, test your code by running
 */
+ // Returns true if 'op2' has
+// higher or same precedence as 'op1',
+// otherwise returns false.
+function hasPrecedence(op1, op2)
+{
+    if (op2 == '(' || op2 == ')')
+    {
+        return false;
+    }
+    if ((op1 == '*' || op1 == '/') &&
+            (op2 == '+' || op2 == '-'))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+// A utility method to apply an
+// operator 'op' on operands 'a' 
+// and 'b'. Return the result.
+function applyOp(op, b, a) {
+  switch (op) {
+    case '+':
+      return a + b;
+    case '-':
+      return a - b;
+    case '*':
+      return a * b;
+    case '/':
+      if (b == 0) {
+        throw new Error(Error);
+      }
+      return parseInt(a / b, 10);
+  }
+  return 0;
+}
+     
 
 class Calculator {
   constructor() {
@@ -30,8 +70,8 @@ class Calculator {
     this.result *= value;
   }
   divide(value) {
-    if(value == undefined || typeof value !== 'number' || value == 0) {
-      throw Error("Error");
+    if(value == null || value == undefined || value == 0) {
+      throw new Error(Error);
     }
     this.result /= value;
   }
@@ -42,11 +82,13 @@ class Calculator {
     return this.result;
   }
   calculate(str) {
-    let arr = str.split();
-    /* Implementation pending */
+    let ans = eval(str);
+    if(ans == Infinity || ans == undefined) {
+      throw new Error(Error);
+    }
+    this.result += ans;
+
   }
 }
-calc = new Calculator();
-console.log(calc.getResult());
-console.log(calc.divide(0));
+
 module.exports = Calculator;

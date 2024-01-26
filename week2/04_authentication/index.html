@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            // function getAnimalData() {
+            //     // by default fetch is a GET method
+            //     fetch("https://fakerapi.it/api/v1/persons")
+            //         .then(function(response) {
+            //             response.json()  // expect a json format, and we know it is in json
+            //             .then(function(finalData) {
+            //                console.log(finalData);
+            //             });
+            //     });
+            // }
+
+            // A better async approach
+            async function getAnimalData() {
+                const response = await fetch("https://fakerapi.it/api/v1/persons");
+                const finalData = await response.json();
+                console.log(finalData);
+            }
+        </script>
+        <button onclick="getAnimalData()">Get Animal Data</button>
+    </body>
+</html>

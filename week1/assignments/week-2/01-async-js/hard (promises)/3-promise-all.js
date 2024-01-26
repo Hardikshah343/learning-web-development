@@ -7,24 +7,24 @@
 function wait1(t) {
     return new Promise((resolve) => {
         setTimeout(()=>{
-            resolve;
-        }, t);
+            resolve();
+        }, t*1000);
     });
 }
 
 function wait2(t) {
     return new Promise((resolve) => {
         setTimeout(()=>{
-            resolve;
-        }, t);
+            resolve();
+        }, t*1000);
     });
 }
 
 function wait3(t) {
     return new Promise((resolve) => {
         setTimeout(()=>{
-            resolve;
-        }, t);
+            resolve();
+        }, t*1000);
     });
 }
 
@@ -40,5 +40,5 @@ async function calculateTime(t1, t2, t3) {
     return end - start;
 }
 
-console.log("WHAT", calculateTime(1000,2000,3000));
+// console.log("WHAT", calculateTime(1000,2000,3000));
 module.exports = calculateTime;

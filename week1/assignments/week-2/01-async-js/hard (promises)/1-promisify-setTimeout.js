@@ -1,15 +1,14 @@
 /*
-    Write a function that returns a promise that resolves after n seconds have passed, where n is passed as an argument to the function.
+    Write a function that returns a promise that resolves after n seconds have passed, 
+    where n is passed as an argument to the function.
 */
 
 function wait(n) {
-    let p = new Promise((resolve) => {
+    return p = new Promise((resolve) => {
         setTimeout(()=> { 
-            resolve;
+            resolve();
         }, n*1000);
-
     });
-    return p;
 }
 
 module.exports = wait;

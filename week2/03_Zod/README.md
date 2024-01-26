@@ -1,11 +1,21 @@
 # Zod
 
-**Typescript-first schema validation with static type inference**
 > https://zod.dev
 
-* Installation `npm install zod`
+### Why ZOD?
+1. **TypeScript-First Approach**: Zod is designed with TypeScript in mind, providing strong type-checking and autocompletion for your schemas.
 
-Now in zod we first have to define the expected structure as input.
+2. **Concise and Expressive Syntax**: Zod's syntax is concise and expressive, making it easy to define complex data structures with minimal code.
+
+3. **Validation and Parsing**: Zod not only validates data but also automatically parses it into the expected TypeScript types.
+
+4. **Rich Set of Features**: Zod includes a variety of features, such as custom validation, optional and nullable types, union and intersection types, making it a powerful tool for data validation in your applications.
+
+Overall, Zod simplifies the process of declaring and validating data structures, reducing the likelihood of runtime errors and improving the overall robustness of your code.
+
+* **Installation `npm install zod`**
+
+Now for zod we first have to define the expected structure as input.
 ```javascript
 const zod = require("zod");
 
@@ -53,4 +63,18 @@ schema.parse("tuna"); => "tuna"
 schema.parse(12); => "12"
 schema.parse(true); => 'true'
 ```
+
+**Object schemas**
+`z.object(z.array(z.string()));` --> `{["string1", "string2"]}`
+
+**Union and Intersection Types:**
+Zod supports union and intersection types for more flexibility.
+
+
+**Custom Validation**
+Zod allows you to define custom validation logic using the `refine` method.
+
+**Parsing and Validation**
+To validate and parse data, use the `parse` method. If the data is invalid, it throws an error with details about the validation failure.
+
 
