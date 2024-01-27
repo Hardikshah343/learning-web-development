@@ -16,7 +16,7 @@ const jwtPassword = 'secret';
 function signJwt(username, password) {
     // Your code here
     const emailSchema = zod.string().email();
-    const passwordSchema = zod.string().length(6);
+    const passwordSchema = zod.string().min(6);
 
     const emailStatus = emailSchema.safeParse(username);
     const passwordStatus = passwordSchema.safeParse(password);

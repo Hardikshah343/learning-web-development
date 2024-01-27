@@ -204,13 +204,35 @@ app.get("/users", (req,res) => {
 
 ```
 
-**Mostly JWT function used**
-#### jwt.verify(token, password)
+### The Bank Example
+
+Lets say we want to create a acoount in bank, deposit some money and get back a cheque book from bank.
+* Whenever we have to pay someone, we sign the cheque.
+* Everyone can see our sign.
+* If anyone else try to do the same sign on their cheque book bank won't accept theirs, will only accept our cheque for our sign..
+
+**"My cheque book" == "my json web token"**
+
+So, **Cheque book** is
+* Something bank gives me the first time I visit it (sign in/ create account)
+* Something I need to keep safe, if I lose a cheque, someone can debit my account
+* Even though other people can see my signature/how the cheque looks, if they try to re-create it, the bank will catch them.
+**But if we give intruder the same signed cheque, then bank will allow it**
+
+### JWT
+* JSON web tokens are just like these cheques.
+* They are issued by the backend when you sign in.
+* Anyone can create something very similar, but the backend would reject it.
+* If you lose the original JWT, then it is a problem.
+
+
+**Mostly JWT functions that are used**
+### `jwt.verify(token, password)`
 To verify is the token is signed by proper authorized medium.
-#### jwt.decode(token)
+### `jwt.decode(token)`
 To convert back to normal json form.
 **Note: Any one can decode a jwt token, but only the person having signature/password can verify the token.**
-#### jwt.sign(jsonKeyValuetoSign, password)
+### `jwt.sign(jsonKeyValuetoSign, password)`
 To put the signature using password in jwt, while converting the json in jwt.
 
 #### **Important points**
