@@ -17,13 +17,13 @@ setInterval(() => {
 }, 1000)
 
 app.use((req, res, next) => {
-  if(numberOfRequestsForUser[req.params.userid] == undefined) {
-    numberOfRequestsForUser[req.params.userid] = 1;
+  if(numberOfRequestsForUser[req.headers["user-id"]] == undefined) {
+    numberOfRequestsForUser[req.headers["user-id"]] = 1;
   }
   else {
-    numberOfRequestsForUser[req.params.userid] += 1;
+    numberOfRequestsForUser[req.headers["user-id"]] += 1;
   }
-  if(numberOfRequestsForUser[req.params.userid] > 5) {
+  if(numberOfRequestsForUser[req.headers["user-id"]] > 5) {
     res.status(404).send("Max request reached");
   } else {
     next();
