@@ -20,3 +20,6 @@ Covering following list of topics for week 2.
 3. **Zod** for input validation
 4. **Authentication**
 5. **DataBases** (NoSQL via MongoDB)
+6. Basic **try Catch** in javascript
+6. Introduction to **DOM**
+
