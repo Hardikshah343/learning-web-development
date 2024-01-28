@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id = "first"> Div one </div>
+        <p> Paragraph one </p>
+        <div> Div two </div>
+        <p class="intro"> Paragraph two </p>
+        <p class="intro"> Paragraph three </p>
+        <div> Yet another div </div>
+        <p id="demo"></p>
+        <script>
+            const x = document.getElementsByClassName("intro");
+            // document.getElementById("demo").innerHTML = 'The first paragraph (index 0) with class="intro" is: '+ x[0].innerHTML;
+            // document.getElementById("demo").innerHTML = 'The first paragraph (index 1) with class="intro" is: '+ x[1].innerHTML;
+            document.getElementById("demo").innerHTML = 'The first paragraph (index 2) with class="intro" is: '+ x[2].innerHTML;
+        </script>
+    </body>
+</html>

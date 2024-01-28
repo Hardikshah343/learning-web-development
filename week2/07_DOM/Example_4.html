@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>        
+        <div id = "first"> Div one </div>
+        <p> Paragraph one </p>
+        <div> Div two </div>
+        <p class="intro"> Paragraph two </p>
+        <p class="intro"> Paragraph three </p>
+        <div> Yet another div </div>
+        <p id="demo"></p>
+        <div id="myDiv" style="border:1px solid black; padding:8px;">
+            <h2 class="example">A heading</h2>
+            <p class="example">A paragraph 1.</p>
+            <p class="example">A paragraph 2.</p>
+        </div>
+        <p id="demo2"></p>
+        <script>
+            var paragraphs = document.querySelectorAll('p');
+            paragraphs.forEach(paragraph => paragraph.style.backgroundColor = "green");
+            var introParagraphs = document.querySelectorAll('p.intro');
+            introParagraphs.forEach(paragraph => paragraph.style.backgroundColor = "red");
+
+            // can pass multiple selects as well const matches = myBox.querySelectorAll("p.intro, p.subheading");
+            const element = document.getElementById("myDiv");
+            const list = element.querySelectorAll(".example");
+            document.getElementById("demo2").innerHTML = list.length;
+        </script>
+    </body>
+</html>

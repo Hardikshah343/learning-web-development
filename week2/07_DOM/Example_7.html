@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- 
+    document.documentElement retursn the element that is the root element of the document 
+    (for example, the <html> element for HTML document)
+-->
+<html>
+    <!-- 
+        For any non-empty html document, documentElement will always be an <html> element. 
+        For any non-empty XML document, documentElement will always be whatever element is the root element of the document
+    -->
+    <style>
+        div {
+            border: 2px solid blue;
+            margin-bottom: 10px;
+        }
+    </style>
+    <body> 
+        <h2>Finding More HTML elements</h2>
+
+        <a name="html">HTML Tutorials</a><br>
+        <a name="css">CSS Tutorials</a><br>
+        <a name="xml">XML Tutorials</a><br>
+
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+        <p id="demo3"></p>
+        <p id="demo4"></p>
+
+        <script>
+            document.getElementById("demo1").innerHTML = "Number of anchors: " + document.anchors.length;
+            document.getElementById("demo2").innerHTML = "The Whole body is : <div>" + document.body.innerHTML + "</div>";
+            document.getElementById("demo3").innerHTML = document.documentElement;
+            document.getElementById("demo4").innerHTML = document.documentElement.innerHTML;
+        </script>
+    </body>
+</html>

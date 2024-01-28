@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>The document object</h1>
+        
+        <p>Delete a p element fom "myDiv": </p>
+        <div id="myDiv" style="padding:16px;background-color:lightgrey;">
+            <h3>A div element</h3>
+            <p>Hi I am a temporary paragraph.</p>
+        </div>
+        <input type="button" onclick="myFunction()" value="Replace Paragraph"><br>
+        <input type="button" onclick="myFunctionY()" value="Destroy Paragraph"><br>
+        <input type="button" onclick="myFunctionX()" value="Destroyer"><br>
+        <input type="button" onclick="myFunctionZ()" value="Ultimate Destroyer"><br>
+        <script>
+            function myFunction() {
+                // const parent = document.getElementById("myDiv");
+                // const child = parent.querySelector("p");
+                // parent.removeChild(child);
+                document.getElementById("myDiv").querySelector("p").remove();
+            }
+            function myFunctionY() {
+                const newHead = document.createElement("h2");
+                newHead.innerHTML = "Ha I am new heading";
+                const parent = document.getElementById("myDiv");
+                const child = parent.querySelector("p");
+                parent.replaceChild(newHead, child);
+            }
+            function myFunctionX() {
+                document.getElementById("myDiv").remove();
+            }
+            function myFunctionZ() {
+                document.body.remove();
+            }
+        </script>
+
+        <ul id="myList">
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+        </ul>
+        <p>Click "replace" to replace the second item in the list.</p>
+        <button onclick="myFunction()">Replace</button>
+        <script>
+            function myFunction() {
+                const element = document.getElementById("myList").children[1];
+                const newNode = document.createTextNode("Juice");
+                element.replaceChild(newNode, element.childNodes[0]);
+            }
+        </script>
+    </body>
+</html>

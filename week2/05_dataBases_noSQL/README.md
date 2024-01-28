@@ -99,3 +99,92 @@ Just for hierarchy
 ```javascript
 const existingUser = await Cat.findOne({name: "Zildjian"});   // Cat is the model
 ```
+
+
+# Lets start again
+**What is a database**? A place where data is stored persistently.
+Example: For a linkedin data like User data, Posts, connection relationships, messages,etc.
+
+**So how do users interact with DB**? They done directly access database, we use HTTP servers as the end points, the HTTP servers may change but the data bases remain persistent.
+**So Why dont we allow users to access the DB directly?** 
+* Databases are created using protocls that browsers don't understande.
+* Databases dont have granual access as a first class citizen. Very hard to do user specific access in them. i.e. DB gives access to everything or nothing.
+* There are some databases (firebase) that let you get rid of the http server and try their best to provide granual access.
+
+### CRUD
+Databases usually allow access to 3 primitives
+1. Create data, eg. signup on linkedin
+2. Read Data, eg. get a post from linkedin
+3. Update Data, eg. change profile photo
+4. Delete data, eg. delete post
+
+**Mongoose library**
+In mongoose, first you have to define the schema. (For validation of input)
+This may sound counter intuitive since mongodb is schemaless!!!
+But mongoose library makes you define schema for things like autocompletions or validation of data before it goes in the DB to make sure you are doing things right.
+Schemaless DBs can be very dangerous, using schemas in mongo makes it slightly less dangerous.
+
+**Defining Schema**
+Example: Lets create schema for course selling website.
+```javascript
+const UserSchema = new mongoose.Schema({
+    email: String,
+    password: String,
+    purchasedCourses: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Course"
+    }],
+});
+const CourseSchema = new mongoose.Schema({
+    title: String,
+    price: 5999
+}) 
+```
+Note: `purchasedCourses` under `UserSchema` is a referenece to `Course` collection.
+For each object created we have a random and unique Object ID is assigned. So purchasedCourses is going to store that objectId under userSchema from refering to Courses.
+So when creating a collection or DB we tell the schema.
+```Javascript
+const User = mongoose.model("User", UserSchema);
+const Course = mongoose.model("Course", CourseSchema);
+```
+
+Now CRUD Operations can be used as
+**Create**
+```javascript
+User.create({
+    username: req.body.username,
+    password: req.body.password
+});
+```
+**Read**
+```javascript
+User.findById("1");
+User.findOne({
+    username: "hardik@gmail.com"
+});
+User.find({
+    username: "Hardik@gmail.com"
+});
+```
+**Update**
+```javascript
+User.updateOne(
+    { "id": "1" }, 
+    { $push: {purchasedCourses: courseId }}
+);
+User.update({}, {
+    premium: true
+}); 
+```
+**Delete**
+```javascript
+User.deleteMany({}); // delete all
+User.deleteOne({
+    username: "hardik@gmail.com"
+});
+```
+
+### Jargons in Databases
+1. **Cluster**: the whole storage, consisting of all the databases.
+2. **Database**: Collection of data, may be like a DB of users. Maybe application based Database.
+3. **Table**: Entries in the database. Also known as document.

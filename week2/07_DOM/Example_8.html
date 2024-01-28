@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .demoClass {
+            color:red;
+        }
+    </style>
+    <body>
+        <!-- <p id="demo"></p>
+        <script>
+            document.getElementById("demo").innerHTML = "Date: " + Date();
+        </script> -->
+        <h1 id="myH1">The element object</h1>
+        <!-- document.write() -->
+        <p>HEHEHEH</p>
+        <script>
+            document.write(Date());
+        </script>
+        <p>THIS IS A WONDERFUL TEXT CONSISTING OF SOME TEXT THAT</p>
+
+        <!-- setAttribute() -->
+        <button onclick="myFunction()">Add Class</button><br><br>
+
+        <input id="myInput" value="OK">
+        <p>Click "Change" to change the input field to an input button. </p>
+        <button onclick="changeInput()">Change</button>
+        <script>
+            function myFunction() {
+                document.getElementById("myH1").setAttribute("class", "demoClass");
+            }
+            function changeInput() {
+                document.getElementById("myInput").setAttribute("type", "button");
+            }
+        </script>
+
+        <!-- -->
+
+    </body>
+</html>

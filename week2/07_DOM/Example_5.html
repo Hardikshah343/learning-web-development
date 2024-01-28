@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        div {
+            border: 2px solid blue;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <body>
+        <h1>The Document Object</h1>
+        <h2>The querySelectorAll() method</h2>
+        <p>Change the background color of every p element where the parent is a div element:</p>
+        <div>
+            <h3>H3 element</h3>
+            <p>I am a p element, my parent is a div element.</p>
+        </div>
+        <p>I am a p element, my parent is body :( </p>
+        <div>
+            <h2>H2 Element</h2>
+            <p>I am a p element, my parent is also a div element.</p>
+        </div>
+
+        <script>
+            const nodeList = document.querySelectorAll("div > p");
+            for(let i = 0; i < nodeList.length; i++) {
+                nodeList[i].style.backgroundColor = "purple";
+                nodeList[i].style.color = "white";
+            }
+        </script>
+    </body>
+</html>

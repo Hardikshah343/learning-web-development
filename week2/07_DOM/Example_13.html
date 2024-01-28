@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Javascript Eventlisteners</h2>
+
+        <p>This example uses the addEventListener() method to execute a function when a user clicks on a button.</p>
+        <button id="myBtn">Try it</button>
+
+        <script>
+            document.getElementById("myBtn").addEventListener("click", myFunction);
+
+            function myFunction() {
+                alert ("Hello world!");
+            }
+        </script>
+
+        <br>
+        <p>This example uses the addEventListener() method on window object.</p>
+        <p>Try resizing the window to trigger the "resize" event handler</p>
+        <p id="demo"></p>
+        
+        <script>
+            window.addEventListener("resize", function(){
+                document.getElementById("demo").innerHTML = Math.floor(Math.random()*100000);
+            });
+            
+        </script>
+
+        <br>
+        <p>This example uses the addEventListener() method to add two click events on same button</p>
+        <button id="hellobutton">Try it</button>
+        <script>
+            var x = document.getElementById("hellobutton");
+            x.addEventListener("click",otherFunction);
+            x.addEventListener("click", someOtherFunction);
+            function otherFunction(){
+                alert("Hello World!");
+            }
+            function someOtherFunction(){
+                alert("This function also executed!");
+            }
+        </script>
+        <br>
+
+        <p>This example uses the addEventListener() method to add many events on the same button.</p>
+        <button id="multiButton">Try me</button>
+        <p id="demoId"></p>
+        <button onclick="removeHandler()" id="mybutton">Remove click event</button>
+        <script>
+            var x = document.getElementById("multiButton");
+            x.addEventListener("mouseover", myfirstfunction);
+            x.addEventListener("click", mysecondfunction);
+            x.addEventListener("mouseout", mythirdfunction);
+
+            function myfirstfunction() {
+                document.getElementById("demoId").innerHTML += "Moused over<br>"
+            }
+            function mysecondfunction() {
+                document.getElementById("demoId").innerHTML += "Clicked!<br>"
+            }
+            function mythirdfunction() {
+                document.getElementById("demoId").innerHTML += "Moused out!<br>"
+            }
+            function removeHandler() {
+                document.getElementById("multiButton").removeEventListener("mouseout", mythirdfunction);
+            }
+        </script>
+    </body>
+</html>
