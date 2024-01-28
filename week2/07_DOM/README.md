@@ -1,10 +1,6 @@
 
 # Document Object Model
 
-In this session, Laisha delves into the `Document Object Model (DOM)`, demystifying the core structure that transforms plain HTML pages into dynamic, interactive web encounters through JavaScript. She also sheds light on NodeList and HTMLCollection, the essential tools for effectively handling clusters of elements.
-
-
-
 You know how a remote control brings a television to life by letting you change channels and do cool things? Well, in the web world, JavaScript is like that remote control for your HTML page, making it active and dynamic. And the secret sauce behind this magic is the DOM – the Document Object Model.
 
 ![Alt text](image.png)
