@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .divClass {
+            border: 5px solid;
+            background-color: aquamarine;
+            padding: 15px;
+            margin:10px;       
+        }
+        .todoClass {
+            border: 5px solid;
+            background-color: darksalmon;
+            padding: 15px;
+            margin:10px;             
+        }
+    </style>
+    <body>
+        <div class=divClass>
+            <input id="titleOfTodo" type="text" placeholder="title"></input><br><br>
+            <input id="descriptionOfTodo" type="text" placeholder="description"></input><br><br>
+            <button onclick="">Get todo</button>            
+            <div id="container"></div>
+        </div>
+    </body>
+    <script>
+        
+        async function updateOnStart() {
+            const currentData = await fetch("http://localhost:3000/todos");
+            const data = await currentData.json();            
+            updateDomBasedOnState(data.state);
+        }
+
+        function markAsDone(todoId) {
+            console.log(todoId);
+            const parent = document.getElementById(todoId);
+            parent.children[2].innerHTML = "Done!";
+        }
+
+        function createChild(title, description, id) {
+            const child = document.createElement("div");
+            const firstGrandChild = document.createElement("div");
+            firstGrandChild.innerHTML = title;
+            const secondGrandChild = document.createElement("div");
+            secondGrandChild.innerHTML = description;
+            const thirdGrandChild = document.createElement("button");
+            thirdGrandChild.innerHTML = "Mark as done";
+            thirdGrandChild.setAttribute("onclick", "markAsDone("+id+")");
+            child.appendChild(firstGrandChild);
+            child.appendChild(secondGrandChild);
+            child.appendChild(thirdGrandChild);
+            child.setAttribute("id", id);
+            child.setAttribute("class", "todoClass");
+            return child;
+        }
+
+        /*
+        State will always be an array
+        Every element of state would have a title, description and id
+        */
+        function updateDomBasedOnState(state) {
+            console.log(state[0].title, state.length);
+            /* If there is any element in container we remove it*/
+            const container = document.getElementById("container");
+            container.innerHTML = "";
+            /* Go through the state to create all the elements */
+            for(let i = 0; i < state.length; i++) {
+                console.log(state[0].title);
+                container.appendChild(createChild(state[i].title, state[i].description, state[i].id));
+            }
+        }
+
+        window.setInterval(updateOnStart, 2000);
+
+    </script>
+</html>

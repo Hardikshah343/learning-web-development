@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .divClass {
+            border: 5px solid;
+            background-color: aquamarine;
+            padding: 15px;
+            margin:10px;       
+        }
+        .todoClass {
+            border: 5px solid;
+            background-color: darksalmon;
+            padding: 15px;
+            margin:10px;             
+        }
+    </style>
+    <body>
+        <div class=divClass>
+            <input id="titleOfTodo" type="text" placeholder="title"></input><br><br>
+            <input id="descriptionOfTodo" type="text" placeholder="description"></input><br><br>
+            <button onclick="addTodo()">Add todo</button>            
+            <div id="container"></div>
+        </div>
+    </body>
+    <script>
+        let id = 0;
+        function addTodo(){
+            /* Can use multiline string */
+            /*
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            document.getElementById("container").innerHTML = `
+            <div>
+                <div>${title}</div>
+                <div>${description}</div>
+                <button>Mark as done</button>
+            </div>
+            `
+            */
+            const wholeDiv = document.createElement('div');
+            wholeDiv.setAttribute("class", "todoClass");
+            const titleTag = document.createElement('div');            
+            titleTag.innerHTML = document.getElementById("titleOfTodo").value;
+            wholeDiv.appendChild(titleTag);  
+            const descriptionTag = document.createElement('div');
+            descriptionTag.innerHTML = document.getElementById("descriptionOfTodo").value;
+            wholeDiv.appendChild(descriptionTag);
+            const doneButton = document.createElement('button');
+            doneButton.innerHTML = "Mark it done";
+            doneButton.id = "doneButton";
+            doneButton.addEventListener("click", ()=>{doneButton.remove()});
+            wholeDiv.appendChild(doneButton);
+            const delButton = document.createElement('button');
+            delButton.innerHTML = "Delete";
+            delButton.id = "deleteButton";
+            delButton.addEventListener("click", ()=>{wholeDiv.remove()});
+            wholeDiv.appendChild(delButton);
+            wholeDiv.setAttribute("id", ++id);
+            document.getElementById("container").append(wholeDiv);
+        }
+    </script>
+</html>

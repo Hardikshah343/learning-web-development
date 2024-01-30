@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let oldTimeOutPropulateDiv;
+        function debouncePopulateDiv() {
+            clearTimeout(oldTimeOutPropulateDiv);
+            oldTimeOutPropulateDiv = setTimeout(()=>{
+                populateDiv2();
+            }, 500); // 100ms delay
+        }        
+        async function populateDiv2(){
+            const a = document.getElementById("firstNumber").value;
+            const b = document.getElementById("secondNumber").value;
+
+            const res = await fetch("http://localhost:3000/sum?a="+a+"&b="+b);
+            const ans = await res.text();
+            document.getElementById("finalSum").innerHTML = "Async sum is " + ans;
+            // const element = document.getElementById("finalSum");
+            // element.innerHTML = parseInt(a) + parseInt(b);
+        }
+
+        let oldTimeOutSimpleInterest;
+        function debounceSimpleInterest() {
+            clearTimeout(oldTimeOutSimpleInterest);
+            oldTimeOutSimpleInterest = setTimeout(()=>{
+                simpleInterestCalculate();
+            }, 500); // 100ms delay
+        }
+        async function simpleInterestCalculate() {
+            const principalAmount = document.getElementById("principalAmount").value;
+            const rateOfInterest = document.getElementById("rateOfInterest").value;
+            const noOfYears = document.getElementById("noOfYears").value;
+            const res = await fetch("http://localhost:3000/interest?principal=" + principalAmount + "&rate=" + rateOfInterest + "&time=" + noOfYears);
+            const data = await res.json();
+            document.getElementById("simpleInterest").innerHTML = "Total amount : " + data.total + "<br>Interest : " + data.interest;
+        }
+    </script>
+    <body>
+        <input id="firstNumber" oninput="debouncePopulateDiv()" type="text" placeholder="First number"></input><br><br>
+        <input id="secondNumber" oninput="debouncePopulateDiv()" type="text" placeholder="Second number"></input><br><br>
+        <!-- <button onclick="populateDiv()">Calculate sum</button> <br><br> -->
+        <!-- <button onclick="populateDiv2()">Async calculate sum</button> <br><br> -->
+        <div id="finalSum"></div>    
+        <br>
+        <br>
+        <h3>Simple Interest calculator</h3>
+        <input id="principalAmount" oninput="debounceSimpleInterest()" type="text" placeholder="Principal Amount"><br><br>
+        <input id="rateOfInterest" oninput="debounceSimpleInterest()" type="text" placeholder="Rate of interest"><br><br>
+        <input id="noOfYears" oninput="debounceSimpleInterest()" type="text" placeholder="Number of years"><br><br>
+        <!-- <button onclick="simpleInterestCalculate()">Calculate Simple Interest</button><br><br> -->
+        <div id="simpleInterest"></div>
+    </body>
+</html>

@@ -23,3 +23,13 @@ Covering following list of topics for week 2.
 6. Basic **try Catch** in javascript
 6. Introduction to **DOM**
 
+## Week 3
+Covering following list of topics for week 3
+1. **DOM**
+2. **Connecting front-end(DOM) to back-end(express server)** using **fetch** api and **Debouncing**
+3. Introduction to **React**
+
+## Week 4
+Covering following list of topics for week 4
+1. **Foundation of React**
+
