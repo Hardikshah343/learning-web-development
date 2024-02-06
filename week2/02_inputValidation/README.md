@@ -88,7 +88,7 @@ One such creature is **Zod**.
     **Example:** When you fill out a form on a website, the details you enter (name, email) go in the body of the request.
     **Use Case:** Great for sending lots of information, especially when you're submitting something like a form.
 
-3. **Headers:**Extra details about the request, useful for special information
+3. **Headers:** Extra details about the request, useful for special information
     **What it is:** Extra information attached to the request, kind of like details about a letter.
     **Example:** Headers could include things like your identity or the type of data you're sending.
     **Use Case:** Perfect for passing along special information that doesn't fit neatly in the URL or body, like who you are or how to handle the data.

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="buttonParent"></div>
+    </body>
+    <script>
+        // state initalisation
+        let state = {
+            count: 0
+        }
+        /* Defining the button componenet*/
+        function onButtonPress() {
+            state.count++;
+            buttonComponentReRender();
+        }
+        /* Re-renderer */
+        function buttonComponentReRender() {
+            document.getElementById("buttonParent").innerHTML = ""; // clearing out
+            const componenet = buttonComponent(state.count);
+            document.getElementById("buttonParent").appendChild(componenet);
+        }
+        /*  /* Defining the button componenet, Component that represents the state */
+        function buttonComponent(count) {
+            const button = document.createElement('button');
+            button.innerHTML = `Counter ${state.count}`;
+            button.setAttribute("onclick", `onButtonPress()`);
+            return button;
+        }
+        /* First time rendering is must */
+        buttonComponentReRender();
+    </script>
+</html>

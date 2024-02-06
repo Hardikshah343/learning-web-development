@@ -4,7 +4,7 @@ Free and open source version control system.
 
 ### What is version control system?
 * A system that keeps track of our files or projects.
-* It allows you to revert selected files to a previous state, **revert** the entire project to a previous state, **compare changes** over time, see who last modified something so that we can know what might be causing a problem, or **what** is the issuem **who** made it, and **when** with the details.
+* It allows you to revert selected files to a previous state, **revert** the entire project to a previous state, **compare changes** over time, see who last modified something so that we can know what might be causing a problem, or **what** is the issue **who** made it, and **when** with the details.
 
 ### Version control System (VCS) are of 2 types
 
@@ -42,7 +42,7 @@ You can use git without GitHub, but not vice versa.
 
 **1. Local Repository:**
 Every VCS tool provides a private workplace as a working copy. Developers make changes in their private workplace and after commit, these changes become a part of the repository.
-Git Takes it one further by providing them a private copy of the whole repository.
+Git Takes it one step further by providing them a private copy of the whole repository.
 Users can perform many operations with this repository such as add file, remove file, rename file, move file, commit changes and many more.
 
 **2. Working Directory and Staging Area or Index:** 

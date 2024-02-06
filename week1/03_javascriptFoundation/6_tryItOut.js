@@ -1,5 +1,5 @@
 /* Run htop in terminal
-as We know JS runs on single code so the following code should exhaust a single core
+as We know JS runs on single core so the following code should exhaust a single core
 */
 
 let sum = 0;

@@ -114,7 +114,7 @@ So when we get a POST request with body, we can check the contents.
 3. Always take care of edge cases, i.e. server may get any kind of data so validation should be done before going ahead with the request.
 
 4. Check out wild cards for route.
-    For eg. if we wand anything after a route should be considered then use :
+    For eg. if we want anything after a route should be considered then use :
     `http://localhost:3000/files/123.txt`
     `http://localhost:3000/files/abc.txt`
     `http://localhost:3000/files/hello/wow`

@@ -23,6 +23,7 @@ function findSum(n) {
 function findSumTill100() {
     console.log("sum is :", findSum(100));
 }
+
 /* Synchronous waiting */
 /* 1. Busy waiting: expensive operation to do  */
 function syncSleep() {

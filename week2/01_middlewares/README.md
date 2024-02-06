@@ -145,7 +145,7 @@ express.json() {
 1. **next() Keyword:**
 In middleware functions in Express, **next is a callback function** that is used to **pass control to the next middleware function in the stack**. When you call next(), it tells Express to move to the next middleware in line. **If next() is not called within a middleware function, the request-response cycle stops, and the client receives no response**.
 
-2. Difference between **res.send* and **res.json**:
+2. Difference between **res.send** and **res.json**:
 
     * **res.send**: Sends a response of various types (string, Buffer, object, etc.). Express tries to guess the content type based on the data provided.
 
