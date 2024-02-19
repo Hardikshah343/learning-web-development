@@ -3,7 +3,7 @@ const mongoDB = require("mongoose");
 
 // usually put this in .env and dont commit on git
 mongoDB.connect(
-    "mongodb+srv://hardikshah343:Super%401234@cluster0.liovzcf.mongodb.net/todoApplication"
+    "mongodb+srv://username:password@cluster_name/collectionName"
 );
 
 /* todo {

@@ -32,4 +32,8 @@ Covering following list of topics for week 3
 ## Week 4
 Covering following list of topics for week 4
 1. **Foundation of React**
+2. **The Todo App**
+
+## Week 5
+1. **React Deeper Dive**
 
