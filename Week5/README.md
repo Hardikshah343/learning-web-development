@@ -478,3 +478,34 @@ Now the 2nd child button doesn't re-renders.
 # Custom Hooks
 Just like useState, useMemo, useEffect, etc we can also create custom hooks.
 `Only Condition is, it should start with a use (naming convention)`
+
+
+# RECAP
+## Reconciliation
+(Kind off) To update the dynamic content of webpage using DOM manipulation whenever there is a change in content or source of content.
+* Can you do DOM manipulation yourself? YES
+* Should you do it yourself? No
+* Is it good for you to delegate the heavy task of calculating the DOM changes to React? Yes
+* What do you give to React? **State**
+* How often does react re-render? **Any time state changes**
+* Does React have tricks to make these calculations faster? **Yes**
+
+So state is dynamic data that changes through the actions is called state.
+
+**Basic react code**
+### useState: 
+Allows us to create a dynamic variable/object, which re-renders the parent wherever used when the state updates. So useState is a hook that monitors the variable and whenever the state is changed using the function it rerenders the components where it is defined uses the state (here it will re-render the App component)
+
+## useEffect
+All the side effects or heavy tasks that you don't want to do again and again but at certain points or just once, we put it in useEffect. Eg. connecting to DB, fetch a request to backend, etc which we either do at initialization or before rendering a particular component.
+
+## useMemo
+When you do not want to re-render the component irrespective of parent being re-rendered. We only want to re-render on a specific condition is when we use useMemo. Maybe because it is a extremely expensive operation.
+
+## useCallback
+If you ever want to memoize a function, we use useCallback
+usecallback is not about minimizing the amount of code that is run
+useCallback is about not rendering a child, if the function hasn't/doesn't need to change across renders.
+
+## useRef
+In Order to access the DOM elements, react gives a way.
