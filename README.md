@@ -37,5 +37,8 @@ Covering following list of topics for week 4
 ## Week 5
 **React Deeper Dive**
 
+## Week 6
+**Routing, prop drilling, Context API**
+**State management using Recoil**
 
 
