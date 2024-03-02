@@ -41,4 +41,5 @@ Covering following list of topics for week 4
 **Routing, prop drilling, Context API**
 **State management using Recoil**
 
-
+## Week 7
+**Tailwind and NextJS**
