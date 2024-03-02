@@ -118,3 +118,32 @@ Terminal: `npx create-next-app@latest`
 ![alt text](./Images/image6.png)
 
 Start editing from `/src/pages/index.tsx`
+
+or using vite  
+
+`npm create vite@latest`
+`npm install -D tailwindcss postcss autoprefixer`
+`npx tailwindcss init -p` This will generate `tailwind.config.js` and `postcss.config.js`
+Configure `tailwind.config.js`
+```js
+export default {
+    content: [
+        "./index.html",
+        "./src/**/*.{js, ts, jsx, tsx} */",
+    ],
+    ...
+}
+```
+Go to index.css and add following lines on top
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+... voila tailwind installed
+
+**Always go to docs for any installation, its a good practice**
+
+
+Check out Storybook, MUI (Material UI)
