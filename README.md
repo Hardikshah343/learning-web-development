@@ -42,4 +42,6 @@ Covering following list of topics for week 4
 **State management using Recoil**
 
 ## Week 7
-**Tailwind and NextJS**
+**Tailwind CSS**
+
+## Simple Paytm Project
