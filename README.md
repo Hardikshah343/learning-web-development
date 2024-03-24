@@ -32,7 +32,7 @@ Covering following list of topics for week 3
 ## Week 4
 Covering following list of topics for week 4
 1. **Foundation of React**
-2. **The Todo App**
+2. **The Todo App** 
 
 ## Week 5
 **React Deeper Dive**
@@ -40,8 +40,16 @@ Covering following list of topics for week 4
 ## Week 6
 **Routing, prop drilling, Context API**
 **State management using Recoil**
+**Custom Hooks**
 
 ## Week 7
 **Tailwind CSS**
 
 ## Simple Paytm Project
+
+## Week 8
+**TypeScript**
+
+## Week 9
+**SQL Databases**
+**Prisma ORM**

@@ -261,7 +261,7 @@ function useDebounce(inputValue, timeinMSec) {
 
   useEffect(() => {
     const x = setTimeout(() => {
-      console.log("Timer ended");
+      console.log("Value input is", inputValue);
       setDebouncedValue(inputValue);
     }, timeinMSec);
 
