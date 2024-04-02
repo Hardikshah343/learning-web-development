@@ -53,3 +53,6 @@ Covering following list of topics for week 4
 ## Week 9
 **SQL Databases**
 **Prisma ORM**
+
+## Week 10
+**Serverless Deployment**

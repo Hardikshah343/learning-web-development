@@ -1,8 +1,12 @@
 {
     "cSpell.words": [
         "autoincrement",
+        "mousemove",
         "Naruto",
         "VARCHAR",
         "Zustand"
+    ],
+    "cSpell.ignoreWords": [
+        "notok"
     ]
 }

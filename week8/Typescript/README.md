@@ -227,3 +227,188 @@ import Calculator from './Calculator'
 const calc = Calculator();
 console.log(calc.add(10, 5));
 ```
+
+## Advanced TypeScript APIs
+(example4)
+
+### Pick
+`Pick` allows you to create a new type by selecting a set of properties (**Keys**) from an existing type (**Type**)
+Imagine you have a User model with several properties, but for a user profile display, you only need a subset of these properties
+```ts
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    createdAt: Date;
+};
+
+// For a profile display, only pick 'name' and 'email'
+type UserProfile = Pick<User, 'name' | 'email'>;
+
+const displayUserProfile = (user: UserProfile) => {
+    console.log(`Name: ${user.name} and Email: ${user.email});
+};
+```
+
+### Partial
+`Partial` makes all properties of a type optional, creating a type with the same properties, but each marked as optional.
+
+```ts
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    createdAt: Date;
+};
+
+type UserProfileOptional = Partial<User>;
+
+function UpdateUser(user: UserProfileOptional) {
+    // Do something
+}
+UpdateUser({name:"Hello"});
+```
+
+### Readonly
+When you have a configuration object that should not be altered after initialization, making it `Readonly` ensures its properties cannot be changed
+
+```ts
+interface Config {
+    readonly endpoint: string;
+    readonly apikey: string;
+}
+
+const config: Readonly<Config> = {
+    endPoint: 'https://api.example.com',
+    apiKey: 'abcdefghi123'
+};
+//Or
+type User = {
+    readonly endPoint: 'https://api.example.com',
+    readonly apiKey: 'abcdefghi123'
+};
+// config.apiKey = 'newKey'; // Error
+```
+
+### Records and Map
+
+`Record` lets you give a **cleaner** type to objects.
+Its only typescript concept
+
+Example without Record
+```ts
+interface User {
+    id: string;
+    name: string;
+}
+
+types Users = { [key: string]: User };
+
+const users: Users = {
+    'abc123': { id: 'abc123', name: 'John Doe' },
+    'xyz728': { id: 'xyz789', name: 'John Doe' },
+};
+```
+
+Example with Record:
+```ts
+interface User {
+    id: string;
+    name: string;
+}
+
+types Users = Record<string, User>;
+
+const users: Users = {
+    'abc123': { id: 'abc123', name: 'John Doe' },
+    'xyz728': { id: 'xyz789', name: 'John Doe' },
+};
+```
+
+`Map` gives you an even fancier way to deal with objects. Very similar to `Maps` in C++.
+It is a Java Script concept.
+
+Example
+```ts
+interface User {
+    id: string;
+    name: string;
+}
+
+// Initialize an empty Map
+const userMap = new Map<string, User>();
+
+// Add users to map using .set
+userMap.set('abc123', {id: '123', name: 'John Doe'});
+userMap.set('xyz789', {id: '789', name: 'John Doe'});
+
+// Accessing a value using .get
+console.log(userMap.get('abc123'));  // Output: {id: 'abc123', name: 'John Doe'}
+
+userMap.delete('xyz789');
+```
+
+### Exclude
+In a function that can accept several types of inputs but you want to exclude specific types from being passed to it.
+
+```ts
+type Event = 'click' | 'scroll' | 'mousemove';
+type ExcludeEvent = Exclude<Event, 'scroll'>; // allowed 'click' | 'mousemove'
+
+const handleEvent = (event: ExcludeEvent) => {
+    console.log('Handling event: ${event}');
+};
+
+handleEvent('click');  // Ok
+```
+
+### Type inference in ZOD
+When using zod, we are doing runtime validations.
+For example, the following code makes sure that the user is sending the right inputs to update their profile information
+
+```ts
+import { z } from 'zod';
+import express from "express";
+
+const app = express();
+
+//Define the schema for profile update
+const userProfileSchema = z.object({
+    name: z.string().min(1, {message: "Name cannot be empty "}),
+    email: z.string().email({ message: "Invalid email format" }),
+    age: z.number().min(18, { message: "You must be at least 18 years old" }).optional(),
+});
+
+app.put("/user", (req, res) => {
+    const { success } = userProfileSchema.safeParse(req.body);
+    const updateBody = req.body; //how to assign a type to updateBody?
+    /* Approach 1: Assign it here 
+    const updateBody: {
+        name: string,
+        email : string,
+        age ?: number
+    } = req.body;
+    */
+   /* Approach 2: Infer from the zod schema 
+   type FinalUserSchema = z.infer<typeof UserProfileSchema> 
+   const updateBody: FinalUserSchema = req.body;
+   */
+
+    if (!success) {
+        res.status(411).json({});
+    }
+    // update database here
+    res.json({
+        message: "User updated"
+    });
+});
+
+app.listen(3000);
+```
+
+**Type inference** (ref from Zod website):
+You can extract the TypeScript type of any schema with `z.infer<typeof mySchema>`
+```js
+const A = z.string();  // runtime variable
+type A = z.infer<typeof A>; // string  // compile time variable
+```
