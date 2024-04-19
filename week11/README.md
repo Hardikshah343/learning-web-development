@@ -1,41 +1,42 @@
-# Actionable docker
+# NEXT JS
 
-Using docker to run packages locally. Docker lets you do a lot of things.
+NextJS is a framework that was introduced because of some `minor inconvinences` in React.
 
-Actionable docker to start packages locally.
+Inconvinences like
+* Problem 1: In a React Project, you have to maintain a seperate Backend project for your API Routes
+* Problem 2: React does not provide out of the box routing (you have to use react-router-dom)
+* Problem 3: React is not SEO Optimised [not exactly true today because of React Server components]
+* Waterfalling problem
 
-## Installing Docker
+### Advantages of Next.js
+1. Server side rendering - Gets rid of SEO problems
+2. API routes - Single codebase with frontend and backend
+3. File based routing (no need for react-router-dom)
+4. Bundle size optimisations, static site generation
+5. Maintained by the vercel team
 
-## What are we using docker for ?
-Dockers lets you do a lot of things
-* It lets you `containerise` your application
-* It lets you run other people's `code + packages` in your machine.
-* It lets you run common software packages inside a container (eg. Mongo, Postgres, etc)
+### Disadvantages of Next.js
+1. Can not be distributed via a CDN, always needs a server running that does `server side rendering` and hence is expensive
+2. Very opiniated, very hard to move out of it. (React -> Next is easy but Next -> React becomes difficult)
 
-## Where can we get packages from ?
-Just like you can push your `code` to Github/Gitlab
-You can push `images` to `docker registries`
+## Simple next app
+1. Initialize the app
+`$ npx create-next-app@latest`
 
-Note:
-1. Container is a independent entity that runs with its own file system and networking ports.
-2. Images are like iso files that contains all the code.
-3. Images in action or in running in system is what container is. 
-4. You can get images from various  places, but mostly the official docker hub.
+2. Routing
+NextJs has file based routing. This means the way we create files, describes what renders on a route.
 
-## Common commands
-* docker run
-`docker run mongo`
-* Adding a port mapping
-`docker run -p 27015:27017 mongo`
-So any request coming to 27015 will be transfer to docker port 27017
-And any request coming to 27017 wont have anything because on machine (not docker) there is nothing running on port 27017
-* Detached mode: That terminal wont be busy running, it will detach and container will run in background
-`docker run -d -p27017:27017`
-* Check for all containers running in background
-`docker ps`
-* Delete or stop a container
-`docker kill <container id>`
+3. Server vs Client component
+* Server components are rendered on the server.
+* Client components are pushed to the client to be rendered.
 
-TO execute a command in terminal of container
-`docker exec -it <docker-id> /bin/bash`
-You will gain access to terminal of the docker.
+Note: By default everything is a server component
+
+If we want to mark a component as a client component, add at the top
+`"use client"`
+
+When should you create `client component`?
+* Whenever you are using something that sever doesn't understand (useEffect, useState, onClick, ...)
+
+**Note: Try to minimize the client as much as possible** Because it takes away SEO part away.
+

@@ -56,3 +56,11 @@ Covering following list of topics for week 4
 
 ## Week 10
 **Serverless Deployment**
+**AWS Server**
+
+## Week 11
+**NextJS**
+
+## Week 12
+**Docker**
+
