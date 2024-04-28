@@ -13,16 +13,22 @@ export function GET() {
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-
-  const user = await client.user.create({
-    data: {
-      username: body.username,
-      password: body.password
-    }
-  });
-  console.log("DB ID:", user.id);
+  try {
+    const user = await client.user.create({
+      data: {
+        username: body.username,
+        password: body.password
+      }
+    });
+    console.log("DB ID:", user.id);
+  } catch(e) {
+    console.log("Error while creating a user: ", e);
+    return Response.json({
+      message: "Failed to create user",
+    })
+  }
   
   return Response.json({
-    message: "You are logged in"
+    message: "You are logged in",
   });
 }
